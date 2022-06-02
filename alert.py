@@ -18,7 +18,7 @@ df = pd.concat([df, adx, macd, rsi], axis = 1)
 
 last_row = df.iloc[-1]
 
-WEBHOOK_URL = "https://discord.com/api/webhooks/981984523317301279/AZEt7Fz5WWZoHqUgaKfczzmj7Mjf7XuumJLLss-nEFuSZ6FWE_dUWgqvzLQpTmBAoxz1"
+WEBHOOK_URL = "https://discord.com/api/webhooks/982007124332793876/bQLnIcK6qRR3LcOhl2GEP7CetSGfkI-XjErxjw25PxkWD8NBw3ShPgiZEGbhe6M0vYFm"
 
 tmp = last_row["ADX_14"]
 if last_row["ADX_14"] > 25:
