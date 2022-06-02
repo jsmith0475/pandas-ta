@@ -23,9 +23,9 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/982018197245022300/1vYv70MN3smSO
 tmp = last_row["ADX_14"]
 if last_row["ADX_14"] > 25:
     if last_row["DMP_14"] > last_row["DMN_14"]:
-        message = f"STRONG UP TREND: The ADX is {tmp: .2f}"
+        message = f"STRONG UP TREND: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']} -DI {last_row['DMN_14']}"
     if last_row["DMN_14"] > last_row["DMP_14"]:
-        message = f"STRONG DOWN TREND: The ADX is {tmp: .2f}"
+        message = f"STRONG DOWN TREND: The ADX is {last_row['ADX_14']} +DI {last_row['DMP_14']} -DI {last_row['DMN_14']}"
     
     payload = {
         "username" : "alertbot",
@@ -35,7 +35,7 @@ if last_row["ADX_14"] > 25:
     requests.post(WEBHOOK_URL, json = payload)
 
 if last_row["ADX_14"] < 25:
-    message = f"NO TREND: The ADX is {tmp: .2f}"
+    message = f"NO TREND: The ADX is {last_row['ADX_14']} +DI {last_row['DMP_14']} -DI {last_row['DMN_14']}"
     print(message)
     
     payload = {
