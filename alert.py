@@ -13,7 +13,7 @@ symbols = symbols["symbol"].values.tolist()
 for symbol in symbols:
     bars = exchange.fetch_ohlcv(symbol, timeframe = "5m", limit = 500)
     df = pd.DataFrame(bars, columns = ["time", "open", "high", "low", "close", "volume"])
-    cap_time = pd.to_datetime(df["time"],  unit='ms')[1]
+    df['time'] = pd.to_datetime(df['time'], unit = 'ms')
     
     # technical indicators
     adx = df.ta.adx()
@@ -25,6 +25,9 @@ for symbol in symbols:
 
     # grab the last value
     last_row = df.iloc[-1]
+    cap_time = last_row[0]
+
+
 
     # hook to discord channel
     WEBHOOK_URL = "https://discord.com/api/webhooks/982327105041875004/w_ume6BIxlHe3C9jgRUrUXWSFn3oiLcvpb2118vsNh8iZdRGHxD5LqYDer2cGwsjd_sL"
