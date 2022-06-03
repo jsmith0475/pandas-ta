@@ -26,7 +26,7 @@ for symbol in symbols:
     last_row = df.iloc[-1]
 
     # hook to discord channel
-    WEBHOOK_URL = "https://discord.com/api/webhooks/981984523317301279/AZEt7Fz5WWZoHqUgaKfczzmj7Mjf7XuumJLLss-nEFuSZ6FWE_dUWgqvzLQpTmBAoxz1"
+    WEBHOOK_URL = "https://discord.com/api/webhooks/982327105041875004/w_ume6BIxlHe3C9jgRUrUXWSFn3oiLcvpb2118vsNh8iZdRGHxD5LqYDer2cGwsjd_sL"
 
     # logic
     if last_row["ADX_14"] > 25:
