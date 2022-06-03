@@ -40,8 +40,8 @@ for symbol in symbols:
             "content" : message
         }
 
-        print(message)
-        #requests.post(WEBHOOK_URL, json = payload)
+        #print(message)
+        requests.post(WEBHOOK_URL, json = payload)
 
     if last_row["ADX_14"] < 25:
         message = f"NO TREND:{symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
@@ -51,5 +51,5 @@ for symbol in symbols:
             "content" : message
         }
         
-        print(message)
-        #requests.post(WEBHOOK_URL, json = payload)
+        #print(message)
+        requests.post(WEBHOOK_URL, json = payload)
