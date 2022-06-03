@@ -33,7 +33,7 @@ for symbol in symbols:
         if last_row["DMP_14"] > last_row["DMN_14"]:
             message = f"STRONG UP TREND: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
         if last_row["DMN_14"] > last_row["DMP_14"]:
-            message = f"STRONG DOWN TREND:{symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
+            message = f"STRONG DOWN TREND: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
 
         payload = {
             "username" : "alertbot",
@@ -44,7 +44,7 @@ for symbol in symbols:
         requests.post(WEBHOOK_URL, json = payload)
 
     if last_row["ADX_14"] < 25:
-        message = f"NO TREND:{symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
+        message = f"no trend: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
 
         payload = {
             "username" : "alertbot",
