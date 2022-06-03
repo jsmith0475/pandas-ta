@@ -8,7 +8,7 @@ exchange = ccxt.binance()
 
 symbols = pd.read_csv("symbols.csv")
 symbols = pd.DataFrame(symbols, columns = ["symbol"])
-symbols = dft2["symbol"].values.tolist()
+symbols = symbols["symbol"].values.tolist()
 
 for symbol in symbols:
     bars = exchange.fetch_ohlcv(symbol, timeframe = "5m", limit = 500)
