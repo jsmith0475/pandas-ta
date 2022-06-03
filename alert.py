@@ -13,7 +13,8 @@ symbols = symbols["symbol"].values.tolist()
 for symbol in symbols:
     bars = exchange.fetch_ohlcv(symbol, timeframe = "5m", limit = 500)
     df = pd.DataFrame(bars, columns = ["time", "open", "high", "low", "close", "volume"])
-
+    cap_time = pd.to_datetime(df["time"],  unit='ms')[1]
+    
     # technical indicators
     adx = df.ta.adx()
     macd = df.ta.macd(fast = 14, slow = 28)
@@ -31,9 +32,9 @@ for symbol in symbols:
     # logic
     if last_row["ADX_14"] > 25:
         if last_row["DMP_14"] > last_row["DMN_14"]:
-            message = f"STRONG UP TREND: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
+            message = f"{cap_time} STRONG UP TREND: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
         if last_row["DMN_14"] > last_row["DMP_14"]:
-            message = f"STRONG DOWN TREND: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
+            message = f"{cap_time} STRONG DOWN TREND:{symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
 
         payload = {
             "username" : "alertbot",
@@ -44,7 +45,7 @@ for symbol in symbols:
         requests.post(WEBHOOK_URL, json = payload)
 
     if last_row["ADX_14"] < 25:
-        message = f"no trend: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
+        message = f"{cap_time} no trend:{symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
 
         payload = {
             "username" : "alertbot",
