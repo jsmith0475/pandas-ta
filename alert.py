@@ -50,7 +50,7 @@ for symbol in symbols:
     if last_row["ADX_14"] > 25:
         if (last_row_ich_kijun['ISA_9'] < last_row_ich_kijun['ISB_26']): # future up trend
             if (last_row['close'] < last_row['ISA_9']) & (last_row['close'] < last_row['ISB_26']):
-                if (row['ITS_9'] < row['IKS_26']):
+                if (last_row['ITS_9'] < last_row['IKS_26']):
                      message = f"{cap_time} STRONG DOWN TREND: {symbol}: The ADX is {last_row['ADX_14']: .2f} +DI {last_row['DMP_14']: .2f} -DI {last_row['DMN_14']: .2f}"
            
         payload = {
