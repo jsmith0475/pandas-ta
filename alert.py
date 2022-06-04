@@ -44,7 +44,7 @@ for symbol in symbols:
             "content" : message
         }
 
-        #print(message)
+        print(message)
         requests.post(WEBHOOK_URL, json = payload)
 
     if last_row["ADX_14"] < 25:
@@ -55,5 +55,5 @@ for symbol in symbols:
             "content" : message
         }
         
-        #print(message)
+        print(message)
         requests.post(WEBHOOK_URL, json = payload)
