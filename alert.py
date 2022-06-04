@@ -2,16 +2,17 @@ import pandas as pd
 import pandas_ta as ta
 import ccxt, yfinance
 import requests
-import os
-
+import os, sys
 
 exchange = ccxt.binance()
 
-path = os.path.join("/root", "pandas-ta", "symbols.csv")
+# Get list of symbols
+dir = os.path.dirname(os.path.abspath("__file__"))
+path = os.path.join(dir, 'symbols.csv')
 symbols = pd.read_csv(path)
+
 symbols = pd.DataFrame(symbols, columns = ["symbol"])
 symbols = symbols["symbol"].values.tolist()
-symbols
 
 for symbol in symbols:
     bars = exchange.fetch_ohlcv(symbol, timeframe = "5m", limit = 500)
