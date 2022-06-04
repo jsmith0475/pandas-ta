@@ -8,7 +8,7 @@ import os
 exchange = ccxt.binance()
 
 dir = os.getcwd()
-path = os.path.join(dir, 'symbols.csv')
+path = os.path.join(dir, '/pandas-ta/symbols.csv')
 symbols = pd.read_csv(path)
 symbols = pd.DataFrame(symbols, columns = ["symbol"])
 symbols = symbols["symbol"].values.tolist()
