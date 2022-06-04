@@ -6,7 +6,7 @@ import requests
 
 exchange = ccxt.binance()
 
-symbols = pd.read_csv("symbols.csv")
+symbols = pd.read_csv("./symbols.csv")
 symbols = pd.DataFrame(symbols, columns = ["symbol"])
 symbols = symbols["symbol"].values.tolist()
 
